@@ -1,4 +1,7 @@
+package Unit_1;
+
 import java.util.Scanner;
+
 public class name {
 	public static void main(String[] args ) {
 		String str;
