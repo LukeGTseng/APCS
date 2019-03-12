@@ -1,4 +1,6 @@
-public class Greeting {
+package Unit_1;
+
+public class Exercise_7 {
 	
 	public static void name() {
 		System.out.println("Luke Tseng");		
