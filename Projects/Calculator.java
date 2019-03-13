@@ -23,9 +23,8 @@ public class Calculator {
         		System.out.println(sqrt(num));
         	}
         } else {
-        	int num1,num2;I
+        	int num1,num2;
         	System.out.println("Enter first and second number:");
-
         	num1 = s.nextInt();
         	num2 = s.nextInt();
         	if(choose == '+') {
