@@ -6,7 +6,7 @@ public class Exercise_7 {
 	public static void main(String[] args) {
 		System.out.println("Enter a number: ");
 		int input = inputReturn();
-		evenOddChecl(input);
+		evenOddCheck(input);
 	}
 	
 	public static int inputReturn() {
