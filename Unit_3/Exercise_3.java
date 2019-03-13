@@ -3,7 +3,7 @@ package Unit_3;
 import java.io.*;
 import java.util.Scanner;
 
-public class Exercise_3.java {
+public class Exercise_3 {
 	public static void main(String[] args) {
 		try {
 			File myFile = new File("C:\\Users\\s-tsengl\\eclipse-workspace\\Chap6Ex13.txt");
