@@ -1,4 +1,4 @@
-# APCS_Java
+# AP Computer Science Java Programs
 Unit 1 - Intro to Java
 
 Unit 2 - Parameters, Objects, Conditionals, While loop
