@@ -6,4 +6,4 @@ Unit 4 - Classes
 Unit 5 - Inheritance and Polymorphism
 Unit 6 - ArrayLists
 Unit 7 - Search and Sort
-Unit 8 - Recursion
+Unit 8 - Recursion and MergeSort
