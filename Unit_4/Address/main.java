@@ -3,15 +3,15 @@ import java.util.*;
 class main {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		apples[] totalAddresses = null;
-		ArrayList<apples> list = new ArrayList<apples>();
+		address[] totalAddresses = null;
+		ArrayList<address> list = new ArrayList<address>();
 		for (;;) {
 			System.out.println(
 					"Type \"1\" to create a new address\nType \"2\" to get details about all people\nType \"3\" to get details on a specific person\nType \"4\" to list total amount of people in the address book");
 			int num = s.nextInt();
 			if (num == 1) {
-				list.add(apples.readFromInput());
-				totalAddresses = list.toArray(new apples[list.size()]);
+				list.add(address.readFromInput());
+				totalAddresses = list.toArray(new address[list.size()]);
 			} else if (num == 2) {
 				if (totalAddresses == null) {
 					System.out.println("You have not created any addresses yet!!!");
@@ -44,8 +44,9 @@ class main {
 					}
 				}
 			} else if (num == 4) {
-				System.out.printf("Number of People in Address Book: %d\n", apples.getAddresses());
+				System.out.printf("Number of People in Address Book: %d\n", address.getAddresses());
 			}
 		}
 	}
 }
+
