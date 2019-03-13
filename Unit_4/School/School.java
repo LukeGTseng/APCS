@@ -1,3 +1,4 @@
+package School;
 import java.util.*;
 
 public class School {
