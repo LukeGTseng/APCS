@@ -13,8 +13,8 @@ public class address {
 	private static int addresses = 0;
 	Scanner s = new Scanner(System.in);
 
-	public static apples readFromInput() { // class information input method
-		apples newAddress = new apples();
+	public static address readFromInput() { // class information input method
+		address newAddress = new address();
 		System.out.println("Enter Person's Name: ");
 		newAddress.addName();
 		System.out.println("Enter Person's Address: ");
@@ -73,8 +73,8 @@ public class address {
 		return name;
 	}
 
-	public void printAddressFormat(apples apples) {
-		System.out.printf("Name: %s\nAddress: %s\nBirtyday: %s\n", apples.getName(), apples.addressFormat(), apples.birthdayFormat());
+	public void printAddressFormat(address address) {
+		System.out.printf("Name: %s\nAddress: %s\nBirtyday: %s\n", address.getName(), address.addressFormat(), address.birthdayFormat());
 
 	}
 }
