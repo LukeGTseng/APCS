@@ -17,4 +17,16 @@ public class SongCollection {
 	public void filterTitle(Range r) {
 		
 	}
+	public void sortYear() {
+		
+	}
+	public void sortRank() {
+		
+	}
+	public void sortArtist() {
+		
+	}
+	public void sortTitle() {
+		
+	}
 }
