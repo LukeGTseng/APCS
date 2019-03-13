@@ -3,7 +3,7 @@ package mergeSort;
 import java.io.*;
 import java.util.*;
 
-public class Exercise_1 {
+public class mergeSort {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		ArrayList<Integer> intList = new ArrayList<Integer> ();
