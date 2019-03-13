@@ -1,5 +1,3 @@
-package arrayLists;
-
 import java.util.*;
 
 public class Exercise_1 {
