@@ -1,4 +1,6 @@
 # AP Computer Science Java Programs
+Projects - Java Projects
+
 Unit 1 - Intro to Java
 
 Unit 2 - Parameters, Objects, Conditionals, While loop
