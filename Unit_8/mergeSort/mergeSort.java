@@ -16,9 +16,6 @@ public class mergeSort {
 		for(int i = 0; i< intList.size();i++) {
 			intArr[i] = intList.get(i);
 		}
-		sortNum(intArr,0,intArr.length-1);
-		System.out.println(Arrays.toString(intArr));
-		
 		ArrayList<String> strList = new ArrayList<String> ();
 		File newFile = new File("C:\\Users\\s-tsengl\\Documents\\github-get-started-LukeGTseng-master\\HelloGithub\\src\\Unit_7\\names.txt");
 		Scanner scn = new Scanner(newFile);
@@ -29,6 +26,16 @@ public class mergeSort {
 		for(int i = 0; i< strList.size();i++) {
 			strArr[i] = strList.get(i);
 		}
+		System.out.println("Type 1 to add a number\nType 2 to add a name\nType 3 when done");
+		Scanner input = new Scanner(System.in);
+		for(;;) {
+			int num = input.nextInt();
+			if(num == 1) {
+				
+			}
+		}
+		sortNum(intArr,0,intArr.length-1);
+		System.out.println(Arrays.toString(intArr));
 		sortStr(strArr,0,strArr.length-1);
 		System.out.println(Arrays.toString(strArr));
 	}
