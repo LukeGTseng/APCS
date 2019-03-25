@@ -66,7 +66,6 @@ public class GazillionSongs {
 					valid = true;
 				} else if (sort.equals("rank")) {
 					songs.sortRank();
-					System.out.println(sort);
 					valid = true;
 				} else if (sort.equals("artist")) {
 					songs.sortArtist();
