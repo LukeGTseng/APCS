@@ -1,10 +1,10 @@
 package GazillionSongs;
 
+import java.io.*;
 import java.util.*;
 
 public class SongCollection {
-	private ArrayList<Song> songs = new ArrayList<>();
-
+	private static ArrayList<Song> songs = new ArrayList<>();
 	public SongCollection(ArrayList<Song> songs) {
 		this.songs = songs;
 	}
@@ -12,20 +12,23 @@ public class SongCollection {
 		for (int i = 0; i < songs.size(); i++) {
 			if (r.contains(songs.get(i).getYear()) == false) {
 				songs.remove(i);
+				i--;
 			}
 		}
 	}
 	public void filterRank(Range r) {
 		for (int i = 0; i < songs.size(); i++) {
-			if (r.contains(songs.get(i).getYear()) == false) {
+			if (r.contains(songs.get(i).getRank()) == false) {
 				songs.remove(i);
+				i--;
 			}
 		}
 	}
 	public void filterArtist(String s) {
 		for (int i = 0; i < songs.size(); i++) {
-			if (!songs.get(i).getArtist().contains(s)) {
+			if (!songs.get(i).getArtist().toLowerCase().contains(s)) {
 				songs.remove(i);
+				i--;
 			}
 		}
 	}
@@ -33,114 +36,78 @@ public class SongCollection {
 		for (int i = 0; i < songs.size(); i++) {
 			if (!songs.get(i).getTitle().contains(s)) {
 				songs.remove(i);
+				i--;
 			}
 		}
 	}
 	public void sortYear() {
-		int[] year = new int[songs.size()];
-		for(int i = 0;i < year.length;i++) {
-			year[i] = songs.get(i).getYear();
-		}
+		selectionSortYear();
 	}
 	public void sortRank() {
-		int[] rank = new int[songs.size()];
-		for(int i = 0;i < rank.length;i++) {
-			rank[i] = songs.get(i).getRank();
-		}
+		selectionSortRank();
 	}
 	public void sortArtist() {
-
+		selectionSortArtist();
 	}
 	public void sortTitle() {
-
+		selectionSortTitle();
 	}
-	public static void mergeNum(int arr[], int left, int middle, int right) {
-		int n1 = middle - left + 1;
-		int n2 = right - middle;
-		int L[] = new int[n1];
-		int R[] = new int[n2];
 
-		for (int i = 0; i < n1; i++) {
-			L[i] = arr[left + i];
-		}
-		for (int j = 0; j < n2; j++) {
-			R[j] = arr[middle + 1 + j];
-		}
-		int i = 0, j = 0;
-		int k = left;
-		while (i < n1 && j < n2) {
-			if (L[i] <= R[j]) {
-				arr[k] = L[i];
-				i++;
-			} else {
-				arr[k] = R[j];
-				j++;
+	public static void selectionSortYear() {
+		for (int i = 0; i < songs.size(); i++) {
+			int min = i;
+			for (int j = i + 1; j < songs.size(); j++) {
+				if (songs.get(j).getYear() < songs.get(min).getYear()) {
+					min = j;
+				}
 			}
-			k++;
-		}
-		while (i < n1) {
-			arr[k] = L[i];
-			i++;
-			k++;
-		}
-		while (j < n2) {
-			arr[k] = R[j];
-			j++;
-			k++;
+			Song temp = songs.get(i);
+			songs.set(i, songs.get(min));
+			songs.set(min, temp);
 		}
 	}
-
-	public static void sortNum(int arr[], int left, int right) {
-		if (left < right) {
-			int middle = (left + right) / 2;
-			sortNum(arr, left, middle);
-			sortNum(arr, middle + 1, right);
-			mergeNum(arr, left, middle, right);
-		}
-	}
-
-	public static void mergeStr(String arr[], int left, int middle, int right) {
-		int n1 = middle - left + 1;
-		int n2 = right - middle;
-		String L[] = new String[n1];
-		String R[] = new String[n2];
-
-		for (int i = 0; i < n1; i++) {
-			L[i] = arr[left + i];
-		}
-		for (int j = 0; j < n2; j++) {
-			R[j] = arr[middle + 1 + j];
-		}
-		int i = 0, j = 0;
-		int k = left;
-		while (i < n1 && j < n2) {
-			if (L[i].compareTo(R[j]) <= 0) {
-				arr[k] = L[i];
-				i++;
-			} else {
-				arr[k] = R[j];
-				j++;
+	public static void selectionSortRank() {
+		for (int i = 0; i < songs.size(); i++) {
+			int min = i;
+			for (int j = i + 1; j < songs.size(); j++) {
+				if (songs.get(j).getRank() < songs.get(min).getRank()) {
+					min = j;
+				}
 			}
-			k++;
-		}
-		while (i < n1) {
-			arr[k] = L[i];
-			i++;
-			k++;
-		}
-		while (j < n2) {
-			arr[k] = R[j];
-			j++;
-			k++;
+			Song temp = songs.get(i);
+			songs.set(i, songs.get(min));
+			songs.set(min, temp);
 		}
 	}
-
-	public static void sortStr(String arr[], int left, int right) {
-		if (left < right) {
-			int middle = (left + right) / 2;
-			sortStr(arr, left, middle);
-			sortStr(arr, middle + 1, right);
-			mergeStr(arr, left, middle, right);
+	public static void selectionSortArtist() {
+		for (int i = 0; i < songs.size(); i++) {
+			int min = i;
+			for (int j = i + 1; j < songs.size(); j++) {
+				if (songs.get(j).getArtist().compareTo(songs.get(min).getArtist())<0) {
+					min = j;
+				}
+			}
+			Song temp = songs.get(i);
+			songs.set(i, songs.get(min));
+			songs.set(min, temp);
+		}
+	}
+	public static void selectionSortTitle() {
+		for (int i = 0; i < songs.size(); i++) {
+			int min = i;
+			for (int j = i + 1; j < songs.size(); j++) {
+				if (songs.get(j).getTitle().compareTo(songs.get(min).getTitle())<0) {
+					min = j;
+				}
+			}
+			Song temp = songs.get(i);
+			songs.set(i, songs.get(min));
+			songs.set(min, temp);
+		}
+	}
+	public void output(PrintStream out) {
+		for (Song n : songs) {
+			out.println(n.toString());
 		}
 	}
 }
