@@ -106,8 +106,8 @@ public class SongCollection {
 		}
 	}
 	public void output(PrintStream out) {
-		for (Song n : songs) {
-			out.println(n.toString());
+		for (Song s : songs) {
+			out.println(s.toString());
 		}
 	}
 }
