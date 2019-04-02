@@ -29,9 +29,10 @@ public class GazillionSongs {
 			Scanner filterInput = new Scanner(System.in);
 			String input = filterInput.nextLine();
 			Scanner stringinput = new Scanner(input);
+			boolean invalid = false;
 			while (stringinput.hasNext()) {
 				String filter = stringinput.next();
-				if(filter.equals("")) {
+				if (filter.equals("")) {
 					valid = true;
 				} else if (filter.contains("<") == true || filter.contains(">") == true) {
 					if (filter.contains("-year")) {
@@ -51,10 +52,16 @@ public class GazillionSongs {
 						songs.filterTitle(filter);
 						valid = true;
 					} else {
-						System.out.println("Incorrect format");
+						if (!invalid) {
+							System.out.println("Incorrect format");
+							invalid = true;
+						}
 					}
 				} else {
-					System.out.println("Incorrect format");
+					if (!invalid) {
+						System.out.println("Incorrect format");
+						invalid = true;
+					}
 				}
 			}
 		} while (valid == false);
@@ -66,7 +73,7 @@ public class GazillionSongs {
 			Scanner sortInput = new Scanner(System.in);
 			String sort = sortInput.nextLine();
 			sort = sort.toLowerCase();
-			if(sort.equals("")) {
+			if (sort.equals("")) {
 				valid = true;
 			} else if (sort.contains("<") == true || sort.contains(">") == true || sort.contains("-sortBy") == true) {
 				sort = sort.substring(sort.indexOf("<") + 1, sort.indexOf(">"));
