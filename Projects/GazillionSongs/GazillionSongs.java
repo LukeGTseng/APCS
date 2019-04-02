@@ -31,7 +31,6 @@ public class GazillionSongs {
 			Scanner stringinput = new Scanner(input);
 			while (stringinput.hasNext()) {
 				String filter = stringinput.next();
-				filter = filter.toLowerCase();
 				if(filter.equals("")) {
 					valid = true;
 				} else if (filter.contains("<") == true || filter.contains(">") == true) {
