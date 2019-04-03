@@ -9,10 +9,11 @@ public class GazillionSongs {
 		SongCollection songs = new SongCollection(tempList);
 
 		Scanner ipt = new Scanner(System.in);
-		System.out.println("Which file would you like to input?"); //agazillionsongs.txt
+		System.out.println("Which file would you like to input?"); // agazillionsongs.txt
 		File iptFile = new File(ipt.nextLine());
-		if(iptFile.exists()==false) {
-			System.out.println("File does not exist try again ");
+		if (iptFile.exists() == false) {
+			System.out.println("File does not exist");
+			System.exit(1);
 		}
 		Scanner f = new Scanner(iptFile);
 		System.out.println("Which file would you like to output to?");
@@ -26,41 +27,56 @@ public class GazillionSongs {
 		do {
 			System.out.println("Enter your Filter:\n-year<range>\t-rank<range>\t-artist<keyword>\t-title<keyword>");
 			Scanner filterInput = new Scanner(System.in);
-			String filter = filterInput.nextLine();
-			filter = filter.toLowerCase();
-			if (filter.contains("<") == true || filter.contains(">") == true) {
-				if (filter.contains("-year")) {
-					filter = filter.substring(filter.indexOf("<")+1, filter.indexOf(">"));
-					songs.filterYear(Range.parse(filter));
+			String input = filterInput.nextLine();
+			Scanner stringinput = new Scanner(input);
+			boolean invalid = false;
+			while (stringinput.hasNext()) {
+				String filter = stringinput.next();
+				if (filter.equals("")) {
 					valid = true;
-				} else if (filter.contains("-rank")) {
-					filter = filter.substring(filter.indexOf("<")+1, filter.indexOf(">"));
-					songs.filterRank(Range.parse(filter));
-					valid = true;
-				} else if (filter.contains("-artist")) {
-					filter = filter.substring(filter.indexOf("<")+1, filter.indexOf(">"));
-					songs.filterArtist(filter);
-					valid = true;
-				} else if (filter.contains("-title")) {
-					filter = filter.substring(filter.indexOf("<")+1, filter.indexOf(">"));
-					songs.filterTitle(filter);
-					valid = true;
+				} else if (filter.contains("<") == true || filter.contains(">") == true) {
+					if (filter.contains("-year")) {
+						filter = filter.substring(filter.indexOf("<") + 1, filter.indexOf(">"));
+						songs.filterYear(Range.parse(filter));
+						valid = true;
+					} else if (filter.contains("-rank")) {
+						filter = filter.substring(filter.indexOf("<") + 1, filter.indexOf(">"));
+						songs.filterRank(Range.parse(filter));
+						valid = true;
+					} else if (filter.contains("-artist")) {
+						filter = filter.substring(filter.indexOf("<") + 1, filter.indexOf(">"));
+						songs.filterArtist(filter);
+						valid = true;
+					} else if (filter.contains("-title")) {
+						filter = filter.substring(filter.indexOf("<") + 1, filter.indexOf(">"));
+						songs.filterTitle(filter);
+						valid = true;
+					} else {
+						if (!invalid) {
+							System.out.println("Incorrect format");
+							invalid = true;
+						}
+					}
 				} else {
-					System.out.println("Incorrect format");
+					if (!invalid) {
+						System.out.println("Incorrect format");
+						invalid = true;
+					}
 				}
-			} else {
-				System.out.println("Incorrect format");
 			}
 		} while (valid == false);
 		// sorting
 		valid = false;
 		do {
-			System.out.println("Enter your sorting order:\n-sortBy<year>\t-sortBy<rank>\t-sortBy<artist>\t-sortBy<title>");
+			System.out.println(
+					"Enter your sorting order:\n-sortBy<year>\t-sortBy<rank>\t-sortBy<artist>\t-sortBy<title>");
 			Scanner sortInput = new Scanner(System.in);
 			String sort = sortInput.nextLine();
 			sort = sort.toLowerCase();
-			if (sort.contains("<") == true || sort.contains(">") == true || sort.contains("-sortBy") == true) {
-				sort = sort.substring(sort.indexOf("<")+1, sort.indexOf(">"));
+			if (sort.equals("")) {
+				valid = true;
+			} else if (sort.contains("<") == true || sort.contains(">") == true || sort.contains("-sortBy") == true) {
+				sort = sort.substring(sort.indexOf("<") + 1, sort.indexOf(">"));
 				if (sort.equals("year")) {
 					songs.sortYear();
 					valid = true;
